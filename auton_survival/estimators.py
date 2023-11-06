@@ -474,7 +474,7 @@ def _predict_rsf(model, features, times):
   survival_predictions = model.predict_survival_function(features.values,
                                                          return_array=True)
   # survival_predictions = pd.DataFrame(survival_predictions,
-                                      columns=model.event_times_).T
+  #                                    columns=model.event_times_).T
   survival_predictions = pd.DataFrame(survival_predictions, columns=times).T
 
   return __interpolate_missing_times(survival_predictions, times)
