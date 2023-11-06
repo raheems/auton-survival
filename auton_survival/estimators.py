@@ -478,7 +478,7 @@ def _predict_rsf(model, features, times):
   # survival_predictions = pd.DataFrame(survival_predictions, columns=times).T
 
   
-  survival_predictions = model.predict_survival(x=features.values, t=times)
+  survival_predictions = model.predict_survival_function(features, times=times).values
   survival_predictions = pd.DataFrame(survival_predictions, columns=times).T
   
 
