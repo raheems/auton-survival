@@ -471,16 +471,9 @@ def _predict_rsf(model, features, times):
   if isinstance(times, float) or isinstance(times, int):
     times = [float(times)]
 
-  # survival_predictions = model.predict_survival_function(features.values,
-  #                                                       return_array=True)
-  # survival_predictions = pd.DataFrame(survival_predictions,
-  #                                    columns=model.event_times_).T
-  # survival_predictions = pd.DataFrame(survival_predictions, columns=times).T
-
-  
-  survival_predictions = model.predict_survival_function(features, times=times).values
-  survival_predictions = pd.DataFrame(survival_predictions, columns=times).T
-  
+  survival_predictions = model.predict_survival_function(features.values, return_array=True)
+  survival_predictions = pd.DataFrame(survival_predictions,
+                                      columns=model.unique_times_).T
 
   return __interpolate_missing_times(survival_predictions, times)
 
