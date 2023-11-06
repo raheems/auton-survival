@@ -471,7 +471,8 @@ def _predict_rsf(model, features, times):
   if isinstance(times, float) or isinstance(times, int):
     times = [float(times)]
 
-  survival_predictions = model.predict_survival_function(features.values, return_array=True)
+  survival_predictions = model.predict_survival_function(features.values, 
+                                                         return_array=True)
   survival_predictions = pd.DataFrame(survival_predictions,
                                       columns=model.unique_times_).T
 
